@@ -24,6 +24,8 @@ final class ___VARIABLE_sceneName___Presenter: ___VARIABLE_sceneName___Presentat
     func presentSomething(response: ___VARIABLE_sceneName___.Something.Response) {
         
         let viewModel = ___VARIABLE_sceneName___.Something.ViewModel()
-        viewController?.displaySomething(viewModel: viewModel)
+        Task { @MainActor in
+            viewController?.displaySomething(viewModel: viewModel)
+        }
     }
 }

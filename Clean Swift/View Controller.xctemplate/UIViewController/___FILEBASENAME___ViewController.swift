@@ -17,7 +17,7 @@ protocol ___VARIABLE_sceneName___DisplayLogic: AnyObject {
     func displaySomething(viewModel: ___VARIABLE_sceneName___.Something.ViewModel)
 }
 
-final class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABLE_sceneName___DisplayLogic {
+final class ___VARIABLE_sceneName___ViewController: UIViewController {
     var interactor: ___VARIABLE_sceneName___BusinessLogic?
     var router: (___VARIABLE_sceneName___RoutingLogic & ___VARIABLE_sceneName___DataPassing)?
     
@@ -25,7 +25,7 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABL
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        setup()
+        self.setup()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -59,12 +59,16 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABL
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setUpLayout()
-        doSomething()
+//        self.doSomething()
     }
     
     private func setUpLayout() {
         
     }
+    
+}
+
+extension ___VARIABLE_sceneName___ViewController {
     
     // VIP Cycle Start
     func doSomething() {
@@ -72,10 +76,12 @@ final class ___VARIABLE_sceneName___ViewController: UIViewController, ___VARIABL
         interactor?.doSomething(request: request)
     }
     
-    // MARK: - Display Logic
+}
+
+// MARK: - Display Logic
+extension ___VARIABLE_sceneName___ViewController: ___VARIABLE_sceneName___DisplayLogic {
   
     func displaySomething(viewModel: ___VARIABLE_sceneName___.Something.ViewModel) {
         //nameTextField.text = viewModel.name
     }
-    
 }
